@@ -16,9 +16,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[center]: ./center_2016_12_01_13_30_48_287.jpg "Model Visualization"
-[chart]: ./chart.jpg "Chart"
-[training_aws]: ./training_aws.jpg "training"
+[center]: ./center_2016_12_01_13_30_48_287.jpg "Center Camera"
+[chart]: ./chart.jpg "Train and Validation Error"
+[training_aws]: ./training_aws.jpg "Training Process"
 [Nvidia]: ./neural_nvidia.png "Nvidia Architecture"
 
 
@@ -34,6 +34,10 @@ Using the Udacity provided simulator and my drive.py file, the car can be driven
 ```sh
 python drive.py model.h5
 ```
+
+## Model Architecture and Training Strategy
+
+---
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
@@ -65,12 +69,9 @@ The Udacity's Simulator capture three images of each frame of video footage (Cen
 
 And also capture steering angles and throttle, that are Lables.
 
+## Solution Design Approach
 
-## Model Architecture and Training Strategy
-
-First I used provided Training data. Then I collect more three laps on first track (two laps on the "wrong" way). I used Center, Left and Right Camera's images to training the model. To feed model with more data I used data augmentation strategy, using numpy flip function.
-
-## 1. Solution Design Approach
+First I used provided Training data. Then I collect more three laps on first track (two laps on the "wrong" way). I used Center, Left and Right Camera's images to training the model. To feed model with more data I used data augmentation strategy, using numpy flip function. Finally randomly shuffled the data set (code line 99) and put 20% of the data into a validation set (code line 42)
 
 The overall strategy for deriving a model architecture was to use captured images and steering angles to train a Deep Neural Networks and use the trained model to drive a Car autonomously on simulator. 
 
@@ -88,49 +89,9 @@ Then I trained model using Amazon's EC2 Intance, getting goog results:
 
 The final step was to run the simulator to see how well the car was driving around track one. 
 
-[Performance Video On Youtube](https://youtu.be/fX1CnW4eSz4)
+[Performance Video On Youtube](https://youtu.be/fX1CnW4eSz4) - Model driving Car.
 
-A complete run [run](./run1.mp4) (car's point of view)
-
-
-
-
-
+Dowload a complete  [run](./run1.mp4) video. (car's point of view)
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
-####2. Final Model Architecture
-
-The final model architecture (model.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
-
-Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
-
-![alt text][image1]
-
-####3. Creation of the Training Set & Training Process
-
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
-
-![alt text][image2]
-
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
-
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
-
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
-
-After the collection process, I had X number of data points. I then preprocessed this data by ...
-
-
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
-
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
