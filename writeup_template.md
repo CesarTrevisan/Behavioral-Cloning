@@ -19,6 +19,7 @@ The goals / steps of this project are the following:
 [center]: ./center_2016_12_01_13_30_48_287.jpg "Model Visualization"
 [chart]: ./chart.jpg "Chart"
 [training_aws]: ./training_aws.jpg "training"
+[Nvidia]: ./neural_nvidia.png "Nvidia Architecture"
 
 
 [run](./run1.mp4)
@@ -35,47 +36,51 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network 
 * writeup_report.md or writeup_report.pdf summarizing the results
 
-####2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
 python drive.py model.h5
 ```
 
-####3. Submission code is usable and readable
-
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
+### 1. Model Architeture
 
-####1. An appropriate model architecture has been employed
+In my final model I used [Nvidia's SelfDrive Car Architecture](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/), which is represented bellow:
 
-My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128 (model.py lines 18-24) 
+![Alt text][Nvidia]
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras lambda layer (code line 18). 
+My model consists of 9 layers, including a normalization layer, 5 convolutional layers, and 3 fully connected layers. (model.py lines 108-137) 
 
-####2. Attempts to reduce overfitting in the model
+The model includes RELU layers to introduce nonlinearity, and the data is normalized in the model using a Keras lambda layer (code line 18). 
 
-The model contains dropout layers in order to reduce overfitting (model.py lines 21). 
+### 2. Attempts to reduce overfitting in the model
 
-The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 10-16). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
+The model contains dropout layers in order to reduce overfitting. 
 
-####3. Model parameter tuning
+The model was trained and validated on different data sets to ensure that the model was not overfitting (code line 42). The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track.
 
-The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 25).
+### 3. Model parameter tuning
 
-####4. Appropriate training data
+The model used an adam optimizer, so the learning rate was not tuned manually (model.py line 140).
 
-Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ... 
+### 4. Appropriate training data
 
-For details about how I created the training data, see the next section. 
+The Udacity's Simulator capture three images of each frame of video footage (Center, Left and Right cameras)
 
-###Model Architecture and Training Strategy
+![Alt text][center]
 
-####1. Solution Design Approach
+And also capture steering angles and throttle, that are Lables.
 
-The overall strategy for deriving a model architecture was to ...
 
-My first step was to use a convolution neural network model similar to the ... I thought this model might be appropriate because ...
+## Model Architecture and Training Strategy
+
+First I used provided Training data. Then I collect more three laps on first track (two laps on the "wrong" way). I used Center, Left and Right Camera's images to training the model. To feed model with more data I used data augmentation strategy, using numpy flip function.
+
+## 1. Solution Design Approach
+
+The overall strategy for deriving a model architecture was to use captured images and steering angles to train a Deep Neural Networks and use the trained model to drive a Car autonomously on simulator. 
+
+My first step was to use a convolution neural network model similar to the [LeNet Architeture](http://yann.lecun.com/exdb/lenet/), but the result weren't goog enough ... I thought this model might be appropriate because ...
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
 
