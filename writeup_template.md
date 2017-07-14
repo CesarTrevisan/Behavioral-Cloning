@@ -19,7 +19,17 @@ The goals / steps of this project are the following:
 [center]: ./center_2016_12_01_13_30_48_287.jpg "Model Visualization"
 [chart]: ./chart.jpg "Chart"
 [training_aws]: ./training_aws.jpg "training"
-[run]: ./run1.mp4 "Run"
+
+
+[run](./run1.mp4)
+
+[Performance Video On Youtube](https://youtu.be/fX1CnW4eSz4)
+
+
+![alt text][center]
+
+
+
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
