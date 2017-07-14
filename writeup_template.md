@@ -4,8 +4,6 @@
 
 ---
 
-**Behavioral Cloning Project**
-
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior
 * Build, a convolution neural network in Keras that predicts steering angles from images
@@ -85,6 +83,8 @@ Then I trained model using Amazon's EC2 Intance, getting goog results:
 ![Alt text][training_aws]
 
 ![Alt text][chart]
+
+## Results
 
 The final step was to run the simulator to see how well the car was driving around track one. 
 
