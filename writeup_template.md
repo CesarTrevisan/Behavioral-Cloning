@@ -68,7 +68,7 @@ And also capture steering angles and throttle, that are Lables.
 
 ## Solution Design Approach
 
-First I used provided Training data. Then I collect more three laps on first track (two laps on the "wrong" way). I used Center, Left and Right Camera's images to training the model. To feed model with more data I used data augmentation strategy, using numpy flip function. Finally randomly shuffled the data set (code line 99) and put 20% of the data into a validation set (code line 42)
+First I used [Provided Training Data](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip). Then I collect more three laps on first track (two laps on the "wrong" way). I used Center, Left and Right Camera's images to training the model. To feed model with more data I used data augmentation strategy, using numpy flip function. Finally randomly shuffled the data set (code line 99) and put 20% of the data into a validation set (code line 42)
 
 The overall strategy for deriving a model architecture was to use captured images and steering angles to train a Deep Neural Networks and use the trained model to drive a Car autonomously on simulator. 
 
