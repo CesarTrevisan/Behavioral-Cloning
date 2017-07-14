@@ -23,6 +23,9 @@ with open('data/driving_log.csv') as csvfile:
     for line in reader:
         lines.append(line)
 
+#define length
+length=len(lines)
+
 # delete collumns names        
 lines=lines[1:length+1]
 
