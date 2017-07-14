@@ -90,7 +90,7 @@ The final step was to run the simulator to see how well the car was driving arou
 
 [Performance Video On Youtube](https://youtu.be/fX1CnW4eSz4) - Model driving Car.
 
-Dowload a complete  [run](./run1.mp4) video. (car's point of view)
+Dowload a complete  [run](./video.mp4) video. (car's point of view)
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
