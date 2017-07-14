@@ -78,7 +78,7 @@ In order to gauge how well the model was working, I split my image and steering 
 
 To combat the overfitting, I modified the model inserting Dropout in Convolution and Fully Connected Layers (code line 118, 121, 123, 125, 128, 133, 135)
 
-Then I trained model using Amazon's EC2 Intance, getting goog results:
+Then I trained model using Amazon's EC2 Instance, getting goog results:
 
 ![Alt text][training_aws]
 
