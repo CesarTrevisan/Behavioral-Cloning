@@ -23,18 +23,6 @@ with open('data/driving_log.csv') as csvfile:
     for line in reader:
         lines.append(line)
 
-# Appending more data    
-with open('data/driving_log_track1_right.csv') as csvfile:
-    reader = csv.reader(csvfile)
-    for line in reader:
-        lines.append(line)
-
-# Appending more data      
-with open('data/driving_log_track1_wrong.csv') as csvfile:
-    reader = csv.reader(csvfile)
-    for line in reader:
-        lines.append(line)
-
 # delete collumns names        
 lines=lines[1:length+1]
 
