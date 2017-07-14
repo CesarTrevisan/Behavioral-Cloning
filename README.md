@@ -14,10 +14,10 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[center]: ./center_2016_12_01_13_30_48_287.jpg "Center Camera"
-[chart]: ./chart.jpg "Train and Validation Error"
-[training_aws]: ./training_aws.jpg "Training Process"
-[Nvidia]: ./neural_nvidia.png "Nvidia Architecture"
+[center]: ./examples/center_2016_12_01_13_30_48_287.jpg "Center Camera"
+[chart]: ./examples/chart.jpg "Train and Validation Error"
+[training_aws]: ./examples/training_aws.jpg "Training Process"
+[Nvidia]: ./examples/neural_nvidia.png "Nvidia Architecture"
 
 
 ## Rubric Points
