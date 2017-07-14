@@ -22,12 +22,6 @@ The goals / steps of this project are the following:
 [Nvidia]: ./neural_nvidia.png "Nvidia Architecture"
 
 
-[run](./run1.mp4)
-
-[Performance Video On Youtube](https://youtu.be/fX1CnW4eSz4)
-
-
-
 ## Rubric Points
 
 My project includes the following files:
@@ -80,15 +74,28 @@ First I used provided Training data. Then I collect more three laps on first tra
 
 The overall strategy for deriving a model architecture was to use captured images and steering angles to train a Deep Neural Networks and use the trained model to drive a Car autonomously on simulator. 
 
-My first step was to use a convolution neural network model similar to the [LeNet Architeture](http://yann.lecun.com/exdb/lenet/), but the result weren't goog enough ... I thought this model might be appropriate because ...
+My first step was to use a convolution neural network model similar to the [LeNet Architeture](http://yann.lecun.com/exdb/lenet/), but the result weren't goog enough. Then I change the model architeture creating a nes model based in [Nvidia's SelfDrive Car Architecture](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/). 
 
-In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting. 
+In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that the mean squared error in training set decrease after each epoch, but after a certain level increase in  validation set. This implied that the model was overfitting. 
 
-To combat the overfitting, I modified the model so that ...
+To combat the overfitting, I modified the model inserting Dropout in Convolution and Fully Connected Layers (code line 118, 121, 123, 125, 128, 133, 135)
 
-Then I ... 
+Then I trained model using Amazon's EC2 Intance, getting goog results:
 
-The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track... to improve the driving behavior in these cases, I ....
+![Alt text][training_aws]
+
+![Alt text][chart]
+
+The final step was to run the simulator to see how well the car was driving around track one. 
+
+[Performance Video On Youtube](https://youtu.be/fX1CnW4eSz4)
+
+A complete run [run](./run1.mp4) (car's point of view)
+
+
+
+
+
 
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
