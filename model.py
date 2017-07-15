@@ -1,4 +1,3 @@
-# In[ ]:
 
 # Importing libraries
 import csv
@@ -31,60 +30,60 @@ train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
 # defining a generator
 def generator(lines, batch_size=32):
-    num_samples = len(lines)
-    while 1: # Loop forever so the generator never terminates
-        for offset in range(0, num_samples, batch_size):
-            batch_samples = lines[offset:offset+batch_size]
-            
-            images = []
-            measurements = []
-            correction = 0.2
-	    # Using left and right images
-            for line in batch_samples:
-
-		# get file names and define paths
-                source_path_center = line[0].split('/')[-1]
-                source_path_left = line[1].split('/')[-1]
-                source_path_right = line[2].split('/')[-1]
-
-                path_center = 'data/IMG/' + source_path_center
-                path_left = 'data/IMG/' + source_path_left
-                path_right = 'data/IMG/' + source_path_right
-
-		# Open Images and add to Images list
-                image_center = Image.open(path_center)
-                image_left = Image.open(path_left)
-                image_right = Image.open(path_right)
-
-                images.append(np.asarray(image_center))
-                images.append(np.asarray(image_left))
-                images.append(np.asarray(image_right))
-		# Close images
-                image_center.close()
-                image_left.close()
-                image_right.close()
-
-		
-		# Create lables with adjustments for left and right images
-                measurement = float(line[3])
-                measurements.append(measurement)
-                measurements.append(measurement+correction)
-                measurements.append(measurement-correction)
-            
-	    # data Augmentation    
-            augmented_images, augmented_measurements = [], []
-            for image, measurement in zip(images, measurements):
-                augmented_images.append(image)
-                augmented_measurements.append(measurement)
-		# horizontal flip images
-                augmented_images.append(np.fliplr(image))
-                augmented_measurements.append(measurement*-1.0)
-            
-            # features and labels          
-            X_train = np.array(augmented_images)
-            y_train = np.array(augmented_measurements)
-            
-            yield sklearn.utils.shuffle(X_train, y_train)
+	num_samples = len(lines)
+	while 1:
+		# Loop forever so the generator never terminates
+		for offset in range(0, num_samples, batch_size):
+			batch_samples = lines[offset:offset+batch_size]
+			images = []
+			measurements = []
+			correction = 0.2
+			# Using left and right images
+			for line in batch_samples:
+				
+				# get file names and define paths
+				source_path_center = line[0].split('/')[-1]
+				source_path_left = line[1].split('/')[-1]
+				source_path_right = line[2].split('/')[-1]
+				
+				path_center = 'data/IMG/' + source_path_center
+				path_left = 'data/IMG/' + source_path_left
+				path_right = 'data/IMG/' + source_path_right
+				
+				# Open Images and add to Images list
+				image_center = Image.open(path_center)
+				image_left = Image.open(path_left)
+				image_right = Image.open(path_right)
+				
+				images.append(np.asarray(image_center))
+				images.append(np.asarray(image_left))
+				images.append(np.asarray(image_right))
+				
+				# Close images
+				image_center.close()
+				image_left.close()
+				image_right.close()
+				
+				# Create lables with adjustments for left and right images
+				measurement = float(line[3])
+				measurements.append(measurement)
+				measurements.append(measurement+correction)
+				measurements.append(measurement-correction)
+				
+			# data Augmentation
+			augmented_images, augmented_measurements = [], []
+			for image, measurement in zip(images, measurements):
+				augmented_images.append(image)
+				augmented_measurements.append(measurement)
+				# horizontal flip images
+				augmented_images.append(np.fliplr(image))
+				augmented_measurements.append(measurement*-1.0)
+				
+			# features and labels
+			X_train = np.array(augmented_images)
+			y_train = np.array(augmented_measurements)
+			
+			yield sklearn.utils.shuffle(X_train, y_train)
             
             
 
