@@ -21,6 +21,9 @@ with open('data/driving_log.csv') as csvfile:
 	for line in reader:
 		lines.append(line)
 
+# Shuffle Data
+shuffle(lines)
+
 #define length
 length=len(lines)
 
