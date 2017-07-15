@@ -21,14 +21,14 @@ with open('data/driving_log.csv') as csvfile:
 	for line in reader:
 		lines.append(line)
 
-# Shuffle Data
-shuffle(lines)
-
 #define length
 length=len(lines)
 
 # delete collumns names        
 lines=lines[1:length+1]
+
+# Shuffle Data
+shuffle(lines)
 
 # creating validation data
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
