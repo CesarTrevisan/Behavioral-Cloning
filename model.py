@@ -6,6 +6,8 @@ import os
 import sklearn
 from PIL import Image
 from sklearn.model_selection import train_test_split
+from random import shuffle
+
 # import Keras
 from keras.models import Sequential
 from keras.layers import Flatten, Dense, Lambda, Cropping2D, Dropout
